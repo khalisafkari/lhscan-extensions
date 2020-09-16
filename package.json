@@ -1,6 +1,6 @@
 {
   "name": "lhscan-extensions",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "lhscan-extensions",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
