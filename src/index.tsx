@@ -1,4 +1,4 @@
-export { getHome } from './Home';
+import { getHome } from './Home';
 export { getPostsByGenre, getPostsByGenreResult, getByGenre } from './Genre';
 export {
   getByList,
@@ -7,3 +7,4 @@ export {
   getByListWithImageResult,
 } from './List';
 export { getPostView, getPosts } from './Posts';
+export default getHome;
