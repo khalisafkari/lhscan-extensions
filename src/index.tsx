@@ -1,9 +1,9 @@
-import { NativeModules } from 'react-native';
-
-type LhscanExtensionsType = {
-  multiply(a: number, b: number): Promise<number>;
-};
-
-const { LhscanExtensions } = NativeModules;
-
-export default LhscanExtensions as LhscanExtensionsType;
+export { getHome } from './Home';
+export { getPostsByGenre, getPostsByGenreResult, getByGenre } from './Genre';
+export {
+  getByList,
+  getByListWithImage,
+  ListLimit,
+  getByListWithImageResult,
+} from './List';
+export { getPostView, getPosts } from './Posts';
