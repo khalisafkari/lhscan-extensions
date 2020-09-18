@@ -18,7 +18,12 @@ export interface getByListWithImageResult {
   image?: string;
   title?: string;
   view?: number;
-  chapter?: string;
+  chapter_id?: string;
+  chapter_title?: string;
+  genre?: Array<{
+    id: string;
+    title: string;
+  }>;
 }
 
 export const getByList = async (): Promise<getByList[]> => {

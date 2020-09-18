@@ -81,6 +81,8 @@ class ListPage {
     map.putString("title",element.select(".media-body h3 a").text().trim())
     map.putInt("view",element.select(".media-body span").text().replace("\\D+".toRegex(),"").toInt())
     map.putArray("genre",puGenre(element));
+    map.putString("chapter_title",element.select("div a").text().trim())
+    map.putString("chapter_id",element.select("div a").attr("href").trim())
     return map;
   }
 
