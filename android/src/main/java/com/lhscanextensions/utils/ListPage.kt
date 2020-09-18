@@ -80,7 +80,19 @@ class ListPage {
     map.putString("image",element.select("a img").attr("data-src"))
     map.putString("title",element.select(".media-body h3 a").text().trim())
     map.putInt("view",element.select(".media-body span").text().replace("\\D+".toRegex(),"").toInt())
-    map.putString("chapter",element.select(".media-body a").text().trim())
+    map.putArray("genre",puGenre(element));
+    map.putString("chapter",element.select(".media-body").last().select("a").text().trim())
     return map;
+  }
+
+  private fun puGenre(element: Element): ReadableArray? {
+    val array = WritableNativeArray()
+    for (elements in element.select(".media-body small a")) {
+      val map = WritableNativeMap()
+      map.putString("id",elements.attr("href").trim())
+      map.putString("title",elements.text().trim())
+      array.pushMap(map)
+    }
+    return  array
   }
 }
