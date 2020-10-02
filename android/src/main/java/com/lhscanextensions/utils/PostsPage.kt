@@ -48,8 +48,8 @@ class PostsPage {
     val map = WritableNativeMap()
     val result =  run(url)
     val document = Jsoup.parse(result)
-    map.putString("next",document.select("ul.chapter_select option").prev().`val`())
-    map.putString("prev",document.select("ul.chapter_select option").next().`val`())
+    map.putString("next",document.select("ul.chapter_select option[selected]").prev().`val`())
+    map.putString("prev",document.select("ul.chapter_select option[selected]").next().`val`())
     map.putArray("content",parseView(document.body()))
     return map;
   }
