@@ -57,7 +57,7 @@ interface configList {
   sort_type?: 'DESC' | 'ASC';
 }
 
-interface postList {
+export interface postList {
   page: any;
   list: getByListWithImageResult[];
 }
