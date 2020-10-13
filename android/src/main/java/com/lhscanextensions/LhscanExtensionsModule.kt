@@ -8,6 +8,7 @@ import com.facebook.react.bridge.Promise
 import java.io.IOException
 
 import com.lhscanextensions.utils.HomePage
+import com.lhscanextensions.utils.List
 import com.lhscanextensions.utils.ListPage
 import com.lhscanextensions.utils.PostsPage
 
@@ -45,6 +46,11 @@ class LhscanExtensionsModule(reactContext: ReactApplicationContext) : ReactConte
   @ReactMethod
   fun getPostView(url: String,promise: Promise) {
     try { promise.resolve(PostsPage().getView(url)) } catch (e: IOException) { promise.reject(e) }
+  }
+
+  @ReactMethod
+  fun postList(url: String,promise: Promise) {
+      try { promise.resolve(List().getData(url)) } catch (e: IOException) { promise.reject(e) }
   }
 
 }

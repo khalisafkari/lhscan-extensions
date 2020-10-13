@@ -43,3 +43,46 @@ export const getByListWithImage = async ({
     );
   }
 };
+
+interface configList {
+  page?: number;
+  artist?: string;
+  author?: string;
+  group?: string;
+  m_status?: '' | 1 | 2 | 3;
+  search?: string;
+  genre?: string;
+  ungenre?: string;
+  sort?: 'views' | 'name' | 'last_update';
+  sort_type?: 'DESC' | 'ASC';
+}
+
+interface postList {
+  page: any;
+  list: getByListWithImageResult[];
+}
+
+//https://loveheaven.net/manga-list.html?listType=pagination&page=1&artist=&author=&group=&m_status=&name=&genre=&ungenre=&sort=views&sort_type=DESC
+export const postList = async ({
+  page = 1,
+  artist = '',
+  author = '',
+  group = '',
+  m_status = '',
+  search = '',
+  genre = '',
+  ungenre = '',
+  sort = 'views',
+  sort_type = 'DESC',
+}: configList): Promise<postList> => {
+  try {
+    const url: string = `https://loveheaven.net/manga-list.html?listType=pagination&page=${page}&artist=${artist}&author=${author}&group=${group}&m_status=${m_status}&name=${search}&genre=${genre}&ungenre=${ungenre}&sort=${sort}&sort_type=${sort_type}`;
+    const { page: p, list }: postList = await module.postList(url);
+    return {
+      page: Number(p.match(/\d+/g)[1]),
+      list,
+    };
+  } catch (e) {
+    throw new Error(e);
+  }
+};
